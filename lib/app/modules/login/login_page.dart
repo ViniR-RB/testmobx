@@ -51,8 +51,10 @@ class _LoginPageState extends State<LoginPage> {
                       width: 150,
                       child: Observer(
                         builder: (_) => ElevatedButton(
-                            onPressed:
-                                widget.homeController.isValid ? () {} : null,
+                            onPressed: widget.homeController.isValid
+                                ? () => Navigator.of(context)
+                                    .popAndPushNamed("/home")
+                                : null,
                             child: const Text(
                               "Entrar",
                             )),

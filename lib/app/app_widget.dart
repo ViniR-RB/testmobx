@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:testmobx/app/modules/login/controller/login_controller.dart';
-import 'package:testmobx/app/modules/login/login_page.dart';
+import 'package:testmobx/app/modules/home/controller/home_controller.dart';
 
 import 'core/utils/theme.dart';
 import 'modules/home/home_page.dart';
@@ -15,8 +14,10 @@ class AppWidget extends StatelessWidget {
       title: 'Flutter Demo',
       theme: AppTheme.theme,
       routes: {
-        "/": (context) => LoginPage(homeController: LoginController()),
-        "/home": (context) => const HomePage(),
+        // "/": (context) => LoginPage(homeController: LoginController()),
+        "/": (context) => HomePage(
+              homeController: HomeController(),
+            ),
       },
     );
   }

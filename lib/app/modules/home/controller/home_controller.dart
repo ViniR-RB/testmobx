@@ -26,15 +26,26 @@ abstract class HomeControllerBase with Store {
     }
   }
 
-  addAndSaveTodos(TodoModel todo) async {
+  addTodo() async {
     listTodos.add(todo);
+    await saveTodoInShared();
+    todo = TodoModel("");
+  }
+
+  @action
+  Future createTodo() async => await addTodo();
+
+  @action
+  deleteTodo(int indexList) async {
+    listTodos.removeAt(indexList);
+    await saveTodoInShared();
+  }
+
+  Future<void> saveTodoInShared() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     List<Map<String, dynamic>> todosMapList =
         listTodos.map(((element) => element.toMap())).toList();
     String todoJson = json.encode(todosMapList);
     await prefs.setString("todos", todoJson);
   }
-
-  @action
-  createTodo() async => await addAndSaveTodos(todo);
 }

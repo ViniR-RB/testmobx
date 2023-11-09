@@ -45,8 +45,16 @@ mixin _$HomeController on HomeControllerBase, Store {
       AsyncAction('HomeControllerBase.createTodo', context: context);
 
   @override
-  Future createTodo() {
+  Future<dynamic> createTodo() {
     return _$createTodoAsyncAction.run(() => super.createTodo());
+  }
+
+  late final _$deleteTodoAsyncAction =
+      AsyncAction('HomeControllerBase.deleteTodo', context: context);
+
+  @override
+  Future deleteTodo(int indexList) {
+    return _$deleteTodoAsyncAction.run(() => super.deleteTodo(indexList));
   }
 
   @override

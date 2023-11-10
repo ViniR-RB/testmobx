@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:testmobx/app/core/utils/colors.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/widgets/custom_text_field.dart';
 import 'controller/login_controller.dart';
@@ -64,7 +65,8 @@ class _LoginPageState extends State<LoginPage> {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () =>
+                      launchUrl(Uri.parse('https://www.google.com')),
                   child: const Text("Política de privacidade"),
                 ),
               )
